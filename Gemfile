@@ -39,6 +39,12 @@ gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 # jquery
 gem 'jquery-rails'
 
+gem 'jquery-validation-rails'
+
+gem 'jquery-turbolinks'
+
+gem 'faker', '~> 1.4', '>= 1.4.3'
+
 # Devise
 gem 'devise', '~> 4.1', '>= 4.1.1'
 
