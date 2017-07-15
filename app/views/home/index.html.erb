@@ -1,3 +1,264 @@
-<div class="container">
+<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-</div>
+<script>
+  $(window).load(function() {
+      var boxheight = $('#myCarousel .carousel-inner').innerHeight();
+      var itemlength = $('#myCarousel .item').length;
+      var triggerheight = Math.round(boxheight/itemlength+1);
+      $('#myCarousel .list-group-item').outerHeight(triggerheight);
+  });
+
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December" ];
+  var dayNames= ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+
+  var newDate = new Date();
+  newDate.setDate(newDate.getDate() + 1);
+  $('#Date').html(dayNames[newDate.getDay()] + ", " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+</script>
+
+
+<section class="banner-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card"> <img class="img-fluid" src="https://pike.glose.com/e3AscY4Pap/cbbe57ff8e743dbea329c44fd9719ebeea046d1b/WyJodHRwczpcL1wvc3RvcmFnZS5nb29nbGVhcGlzLmNvbVwvczQtYnVja2V0XC9oYXJyZW5oYWxcLzk3ODAxNDE5MDU5MTQtOTg4YjQ0ZDMtN2ExOS00ZWZkLWEwMzAtOTA3YjU2ZmZmNDA1LmpwZz9Hb29nbGVBY2Nlc3NJZD1zNC1yZWFhYWQlNDBnbG9zZS1wbGF0Zm9ybS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSZFeHBpcmVzPTMyNTAzNjgwMDAwJlNpZ25hdHVyZT1SNXlEM2RIVVVjTlVKdWlWRGUxODQyMFQ4MTRVUWVHcSUyQm8zQ3Q5WEd0akRVbjlsbm5tSmszMSUyQmMxMkZqbGNIQUc4MnFSV2laQWFTcnVMTFZNT3JuM2ZZQkJoQTQlMkJNUklxViUyRkFWYUlOOFZudkRLNmNlNUdpeiUyRnhlblRoejBvb3hRZ2hQUTNrY1dQd2FsNSUyQldpS3ZLeUFxaVdZZzZUaGM1RXc3cTV5S2E1d25FdUJOUFpUWU5VaEVGSnJDNXl2VmpkMWtCa1RYU0pCR3l1OEFoZVclMkI1VXhrSkY3MUtMMVFnJTJGYThjSWxiUCUyRm12cmcyOGwxTmUzcUM2eTQ5M1ZEb3F6UjNkbDJXRkhDeUFXR0FwT0gwcFElMkZVTXlQaDFMWWFBdTljYnJNOUE4Y3RqVVRseFp1cXlhaVdOdzNocndBMEQ0a1R3U2dJY0FNbmNVdDFhdnZTb0xBZyUzRCUzRCIsWyJzaXplIix7ImhlaWdodCI6NTAwfV1d" alt="">
+          <div class="card-img-overlay"> <span class="tag tag-pill tag-danger">Adventure</span> </div>
+          <div class="card-block">
+            <div class="news-title">
+              <h2 class=" title-small"><a href="#">This is a test book</a></h2>
+            </div>
+            <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+          </div>
+        </div>
+        <div class="card"> <img class="img-fluid" src="https://pike.glose.com/e3AscY4Pap/2d324a89380541458933e05042f15be81041fe4a/WyJodHRwczpcL1wvc3RvcmFnZS5nb29nbGVhcGlzLmNvbVwvczQtYnVja2V0XC9jaXRhZGVsXC81NTJhODcwYzE0MzZjOGYwNjVhNTJlYzAtZWUwYmZlZjM2MzVlODg0YzZlYzdiZjUwYjY0OWMxNmUuanBnP0dvb2dsZUFjY2Vzc0lkPXM0LXJlYWFhZCU0MGdsb3NlLXBsYXRmb3JtLmlhbS5nc2VydmljZWFjY291bnQuY29tJkV4cGlyZXM9MzI1MDM2ODAwMDAmU2lnbmF0dXJlPU94OWNuMURpWUtIMm9IQjBjWU9uczNuSllac1g3M2o2NnlCdjRpUiUyQlVyZE5MejJoWWduJTJGdm43OVhJaHJqZDclMkZhcEVMaFR3eFh2dSUyQkExU2dzbmFyWUNLWGhtTFhBWlhxeUxvVmtMdEFqJTJGTno1S2tmUUtXR3B6RnVsU2l5dnpBTVFkS1lXck9JSHBtZGh4JTJCUXF6RXBDcWNiQlZBRmliM2F5d21zWG9SSjNTUmFYd3NzOGdDc3BCV1FmZ1A2WlRUTVAzZVY1R2FibnpLQ21sQ2hBbHZEJTJGdUt1dmVsaVY0TTdzbnEzJTJCWjFDRG9xQkFkeFdwQ1JCVFZMJTJCM0Z3VmhQWiUyQmtpUjk0MHlUbDY1RTB5c3F0c3lRcFdMaHJkaSUyRkJJdDY2dm4wcGJiTldZNkxOUyUyQnc3JTJCc0xiajclMkYlMkJvUEhaMkJhOWNtZHZ2dGZzRnJuUkt6c0NvZ0Y2dyUzRCUzRCIsWyJzaXplIix7ImhlaWdodCI6NTAwfV1d" alt="">
+          <div class="card-img-overlay"> <span class="tag tag-pill tag-info">Business</span> </div>
+          <div class="card-block">
+            <div class="news-title">
+              <h2 class=" title-small"><a href="#">Feminism Activism</a></h2>
+            </div>
+            <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card"> <img class="img-fluid" src="https://pike.glose.com/e3AscY4Pap/bfb8a5657cba0126a7bcbb37a7fbdc9915585173/WyJodHRwczpcL1wvc3RvcmFnZS5nb29nbGVhcGlzLmNvbVwvczQtYnVja2V0XC9jaXRhZGVsXC81NGY2MzJmYjdjYzY3ZGY1MzRjOTFhYTEtNWY0ZGFjN2E4ZjQ1MjgzMjNlMDFiY2NjMDE1NWQ4MjEuanBnP0dvb2dsZUFjY2Vzc0lkPXM0LXJlYWFhZCU0MGdsb3NlLXBsYXRmb3JtLmlhbS5nc2VydmljZWFjY291bnQuY29tJkV4cGlyZXM9MzI1MDM2ODAwMDAmU2lnbmF0dXJlPW0zRzNFMjFrYTRPSiUyRnM3TmllMmlnTUpZYnJnRGV0Q2wxRiUyRnZmNUc2JTJCJTJCcnRUMjRZeTBIaVYzQ1lSWEdRMTJhVWlXQmZhR2dqaHc2dE5zSjRERUUlMkJsbG5EQ0lkMGlJejhQNmFRTTQlMkZobVh2dkcxakJLd21kbDJScWdBa2tjT2FRSGgxRFlFcUZaaHVZcnpLQVJsVVpVZXRucG9nVU9SbnJEUDlzV1JpaTZSOWg0MzJOTEphWmRBSzFNMWxDYmZkZ3hZdGpxU051TGF6RnVSTGxvRm9nUHYxUVU3TUVMdiUyQnhKb3gzdXZWeTR0ZHJDcHY5djRBOVg3Vjd3a2VGVHQ0Tkd4c3UlMkY3eE05JTJCQ05vZHZXTiUyQnl6UmU0UTNaNk51eGRrMDduMVMxWjlscUVCbFRSWUJhbmFxc1dXc3BGZkNGdUpsQyUyQlMlMkJkTk9kTVIlMkJTR0F0JTJGYkh2a1ElM0QlM0QiLFsic2l6ZSIseyJoZWlnaHQiOjUwMH1dXQ==" alt="">
+          <div class="card-img-overlay"> <span class="tag tag-pill tag-success">Travel</span> </div>
+          <div class="card-block">
+            <div class="news-title">
+              <h2 class=" title-small"><a href="#">This is a test book</a></h2>
+            </div>
+            <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+          </div>
+        </div>
+        <div class="card"> <img class="img-fluid" src="https://pike.glose.com/e3AscY4Pap/603423bee2f9c1d326bcf3bf9972c9678eb0136c/WyJodHRwczpcL1wvc3RvcmFnZS5nb29nbGVhcGlzLmNvbVwvczQtYnVja2V0XC9jaXRhZGVsXC81NTI1YWMwZDE0MzZjOGYwNjVhNDU0NmEtOGQ5YTNjZTk1ZDlmMjY4MjFkOWIyNzgwNTM1OTI5NmEuanBnP0dvb2dsZUFjY2Vzc0lkPXM0LXJlYWFhZCU0MGdsb3NlLXBsYXRmb3JtLmlhbS5nc2VydmljZWFjY291bnQuY29tJkV4cGlyZXM9MzI1MDM2ODAwMDAmU2lnbmF0dXJlPWg5TVc5U0hLazk4Nm1JeXNKRGZXJTJCJTJGSUZHZEhHaldRYUFyYUJuQ0ZwUnl3eW9xZjZUbDNDdVQ1NUMlMkIyUEJXM1U5MlBGQVVKbG9VMXg4bHhoS29SWFF2aDhIYjAxeklib3AlMkZVdjllaWhjUk9FZ05mdXZOZ2N1dmlKS3hTVFhQdWFsMFo0Sk53WUswWUl1eEZpaDRYMVJvRVp5RENPcCUyRjJ4cEgybnJJdnF6NXJvTEROMlI0ajdNbFJsR3k4T1M4YSUyQlBaczNmWXJlJTJCJTJGSmNBSHZFMDJYUXFnUVZIRTJQR093ZXUxUjRvUzBBSUwwbUk2QU96anZSaHI0MnFZaWsycDVIZlRLRnNjeExnSmhkSEFLZkVDZVlWVXc0ZmtuQ0tXJTJCbHZpTUJRSFJVeTRLT1A0cnlsVGsyWkVrN1NRRXlobG5Ya1h3a0J4Vnp6RkZNTkg1d2xsVlRTZyUzRCUzRCIsWyJzaXplIix7ImhlaWdodCI6NTAwfV1d" alt="">
+          <div class="card-img-overlay"> <span class="tag tag-pill tag-danger">Children</span> </div>
+          <div class="card-block">
+            <div class="news-title">
+              <h2 class=" title-small"><a href="#">Tyrants of Matriarchy</a></h2>
+            </div>
+            <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 top-slider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+                <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <div class="news-block">
+                <div class="news-media"><img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-5.jpg" alt=""></div>
+                <div class="news-title">
+                  <h2 class=" title-large"><a href="#">Ray madison may struggle to get best from Paul in a 4-2-3-1 formation</a></h2>
+                </div>
+                <div class="news-des">Condimentum ultrices mi est a arcu at cum a elementum per cum turpis dui vulputate vestibulum in vehicula montes vel. Mauris nam suspendisse consectetur mus...</div>
+                <div class="time-text"><strong>2h ago</strong></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="news-block">
+                <div class="news-media"><img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-6.jpg" alt=""></div>
+                <div class="news-title">
+                  <h2 class=" title-large"><a href="#">An Alternative Form of Mental Health Care Gains a Foothold</a></h2>
+                </div>
+                <div class="news-des">Condimentum ultrices mi est a arcu at cum a elementum per cum turpis dui vulputate vestibulum in vehicula montes vel. Mauris nam suspendisse consectetur mus...</div>
+                <div class="time-text"><strong>2h ago</strong></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="news-block">
+                <div class="news-media"><img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-7.jpg" alt=""></div>
+                <div class="news-title">
+                  <h2 class=" title-large"><a href="#">Key Republican Senator Says She Will Not Vote for former president!</a></h2>
+                </div>
+                <div class="news-des">Condimentum ultrices mi est a arcu at cum a elementum per cum turpis dui vulputate vestibulum in vehicula montes vel. Mauris nam suspendisse consectetur mus...</div>
+                <div class="time-text"><strong>2h ago</strong></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-01">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Politics</h3>
+      <div class="">
+        <div class="col-lg-6 card">
+          <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-9.jpg" alt="">
+            <div class="card-block">
+              <div class="news-title">
+                <a href="#"><h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2></a>
+              </div>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 card">
+          <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-10.jpg" alt="">
+            <div class="card-block">
+              <div class="news-title">
+                <a href="#"><h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2></a>
+              </div>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 card">
+          <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-7.jpg" alt="">
+            <div class="card-block">
+              <div class="news-title"><a href="#">
+                <h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2></a>
+              </div>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/media-8.jpg" alt="">
+              <div class="card-block">
+                <div class="news-title">
+                  <a href="#"><h2 class=" title-small">Minorities Suffer From Unequal Pain Treatment</h2></a>
+                </div>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><small class="text-time"><em>3 mins ago</em></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Top</a> </li>
+          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Featured</a> </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing">
+          <div class="tab-pane active" id="home" role="tabpanel">
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-1.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-2.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Obamacare Appears to Be Making People Healthier</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-3.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="profile" role="tabpanel">
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-4.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-3.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">‘S.N.L.’ to Lose Two Longtime Cast Members</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-2.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Obamacare Appears to Be Making People Healthier</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+          </div>
+            <div class="tab-pane" id="messages" role="tabpanel">
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-2.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-3.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">‘S.N.L.’ to Lose Two Longtime Cast Members</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+            <div class="media"> <a class="media-left" href="#"> <img class="media-object" src="http://grafreez.com/wp-content/temp_demos/river/img/media-1.jpg" alt=""> </a>
+              <div class="media-body">
+                <div class="news-title">
+                  <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="video-sec">
+          <h4 class="heading-small">Featured Video</h4>
+          <div class="video-block">
+            <div class="embed-responsive embed-responsive-4by3">
+              <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
