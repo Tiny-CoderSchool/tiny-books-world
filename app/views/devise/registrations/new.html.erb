@@ -1,153 +1,60 @@
-<style>
-#wrap{
-background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
-/* Mozilla Firefox */
-background-image: -moz-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
-/* Opera */
-background-image: -o-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
-/* Webkit (Safari/Chrome 10) */
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #D3D8E8));
-/* Webkit (Chrome 11+) */
-background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
-/* W3C Markup, IE10 Release Preview */
-background-image: linear-gradient(to bottom, #FFFFFF 0%, #D3D8E8 100%);
-background-repeat: no-repeat;
-background-attachment: fixed;
-}
-legend{
-	color:#141823;
-	font-size:25px;
-	font-weight:bold;
-}
-.signup-btn {
-  background: #79bc64;
-  background-image: -webkit-linear-gradient(top, #79bc64, #578843);
-  background-image: -moz-linear-gradient(top, #79bc64, #578843);
-  background-image: -ms-linear-gradient(top, #79bc64, #578843);
-  background-image: -o-linear-gradient(top, #79bc64, #578843);
-  background-image: linear-gradient(to bottom, #79bc64, #578843);
-  -webkit-border-radius: 4;
-  -moz-border-radius: 4;
-  border-radius: 4px;
-  text-shadow: 0px 1px 0px #898a88;
-  -webkit-box-shadow: 0px 0px 0px #a4e388;
-  -moz-box-shadow: 0px 0px 0px #a4e388;
-  box-shadow: 0px 0px 0px #a4e388;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  border: solid #3b6e22  1px;
-  text-decoration: none;
-}
+<%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-.signup-btn:hover {
-  background: #79bc64;
-  background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
-  background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
-  background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
-  background-image: -o-linear-gradient(top, #79bc64, #5e7056);
-  background-image: linear-gradient(to bottom, #79bc64, #5e7056);
-  text-decoration: none;
-}
-.navbar-default .navbar-brand{
-		color:#fff;
-		font-size:30px;
-		font-weight:bold;
-	}
-.form .form-control { margin-bottom: 10px; }
-@media (min-width:768px) {
-	#home{
-		margin-top:50px;
-	}
-	#home .slogan{
-		color: #0e385f;
-		line-height: 29px;
-		font-weight:bold;
-	}
-}
-</style>
-
-<div class="container" id="wrap">
-	  <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form action="r" method="post" accept-charset="utf-8" class="form" role="form">
-            <legend>Your Information</legend>
-
-                <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />
-
-
-                
-
-                <input type="text" name="midlename" value="" class="form-control input-lg" placeholder="Middle Name"  />
-                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />
-                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Date Of Birth (mm/dd/yyyy)"/>
-
-                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Street"/>
-
-                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="City"/>
-
-
-
-
-                    <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  />
-                    <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />                    <label>Birth Date</label>                    <div class="row">
-                        <div class="col-xs-4 col-md-4">
-                            <select name="month" class = "form-control input-lg">
-<option value="01">Jan</option>
-<option value="02">Feb</option>
-<option value="03">Mar</option>
-<option value="04">Apr</option>
-<option value="31">31</option>
-</select>                        </div>
-                        <div class="col-xs-4 col-md-4">
-                            <select name="year" class = "form-control input-lg">
-<option value="1935">1935</option>
-<option value="1936">1936</option>
-<option value="2012">2012</option>
-<option value="2013">2013</option>
-</select>                        </div>
-                    </div>
-                     <label>Gender : </label>                    <label class="radio-inline">
-                        <input type="radio" name="gender" value="M" id=male />                        Male
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="gender" value="F" id=female />                        Female
-                    </label>
-                    <br />
-              <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
-                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
-                        Create my account</button>
-            </form>
-          </div>
+<script>
+$(document).ready(function () {
+  $("#new_user").validate({
+  rules: {
+    "user[email]": {required: true, email: true, remote:"/users/check_email" },
+    "user[password]": {required: true, minlength: 6},
+    "user[password_confirmation]": {required: true, equalTo: "#user_password"}
+  },
+  messages: {
+    "user[email]": {required: "Please specify your email",
+    email: "Invalid email format, please specify as name@domain.com",
+    remote: "Existing email, please specify the other" },
+  }
+  });
+});
+</script>
+<div class="center-container">
+	<div class="row-xs-flex-center">
+        <div class="modal-dialog modal-lg">
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      			<h2>Create Account</h2>
+      			<hr class="colorgraph">
+      			<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6">
+      					<div class="form-group">
+                  <%= f.text_field :email, class: 'form-control input-lg', placeholder: 'First Name', tabindex: 1%>
+      					</div>
+      				</div>
+      				<div class="col-xs-12 col-sm-6 col-md-6">
+      					<div class="form-group">
+      						<%= f.text_field :email, class: 'form-control input-lg', placeholder: 'Last Name', tabindex: 2%>
+      					</div>
+      				</div>
+      			</div>
+						<div class="form-group">
+              <%= f.email_field :email, autofocus: true, class: 'form-control input-lg', placeholder: 'Email Address', tabindex: 4%>
+      			</div>
+						<div class="row">
+      				<div class="col-xs-12 col-sm-6 col-md-6">
+      					<div class="form-group">
+                  <%= f.password_field :password, autocomplete: "off", class: 'form-control input-lg', placeholder: 'Password', tabindex: 5%>
+      					</div>
+      				</div>
+      				<div class="col-xs-12 col-sm-6 col-md-6">
+      					<div class="form-group">
+                  <%= f.password_field :password_confirmation, class: 'form-control input-lg', placeholder: 'Confirm Password', tabindex: 6%>
+      					</div>
+      				</div>
+      			</div>
+      			<hr class="colorgraph">
+      			<div class="row">
+      				<div class="col-xs-12 col-md-6"><%= f.submit 'Create Account', class:  'btn btn-primary btn-block btn-lg', tabindex: 7%></div>
+      				<div class="col-xs-12 col-md-6"><a href="" class="btn btn-primary btn-block btn-lg">Sign In</a></div>
+      			</div>
+      		<% end %>
+      </div>
+  </div>
 </div>
-</div>
-</div>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
