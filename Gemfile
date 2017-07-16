@@ -42,6 +42,11 @@ gem 'jquery-rails'
 # Devise
 gem 'devise', '~> 4.1', '>= 4.1.1'
 
+# Google Map for Rails
+gem 'gmaps4rails'
+
+# Geocoder
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
