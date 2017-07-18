@@ -12,18 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :book_name %>
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :book_description %>
+    <%= form.label :descriptions %>
+    <%= form.text_field :descriptions, id: :book_descriptions %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :book_user_id %>
+    <%= form.label :publisher %>
+    <%= form.text_field :publisher, id: :book_publisher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_date %>
+    <%= form.text_field :published_date, id: :book_published_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type, id: :book_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :page %>
+    <%= form.text_field :page, id: :book_page %>
   </div>
 
   <div class="actions">
