@@ -10,28 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708100541) do
+ActiveRecord::Schema.define(version: 20170724132512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: :cascade do |t|
+  create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.string "description"
-    t.bigint "user_id"
+    t.text "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.bigint "book_id"
-    t.integer "owner_id"
-    t.integer "borrower_id"
-    t.string "status"
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "author_id", null: false
+    t.index ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "publisher"
+    t.string "published_date"
+    t.string "book_type"
+    t.string "editor"
+    t.string "isbn"
+    t.integer "page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_transactions_on_book_id"
+    t.string "cover"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.bigint "book_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_quotes_on_book_id"
+  end
+
+  create_table "shelves", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shelves_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +75,5 @@ ActiveRecord::Schema.define(version: 20170708100541) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "books", "users"
+  add_foreign_key "quotes", "books"
 end

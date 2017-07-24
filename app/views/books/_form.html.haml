@@ -1,0 +1,36 @@
+= form_with(model: book, local: true, :html => {:class => 'ui form'}) do |form|
+  - if book.errors.any?
+    #error_explanation.ui.message
+      %h2.header
+        = pluralize(book.errors.count, "error")
+        prohibited this book from being saved:
+      %ul.list
+        - book.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = form.label :title
+    = form.text_field :title, id: :book_title
+  .field
+    = form.label :isbn, 'ISBN'
+    = form.text_field :isbn, id: :book_isbn
+  .field
+    = form.label :descriptions
+    = form.text_area :descriptions, id: :book_descriptions
+  .field
+    = form.label :publisher
+    = form.text_field :publisher, id: :book_publisher
+  .field
+    = form.label :editor
+    = form.text_field :editor, id: :book_editor
+  .field
+    = form.label :published_date
+    = form.text_field :published_date, id: :book_published_date
+  .field
+    = form.label :type
+    = form.text_field :type, id: :book_type
+  .field
+    = form.label :page
+    = form.text_field :page, id: :book_page
+  .actions
+    = form.submit 'Save',  class: 'ui button'

@@ -1,5 +1,26 @@
-<h1>New Book</h1>
+<div class="ui aligned basic">
+  <div class="ui container segment">
+    <div class="ui dividing right rail">
+      <div class="ui sticky" style="left: 1046px;">
 
-<%= render 'form', book: @book %>
+      </div>
+    </div>
 
-<%= link_to 'Back', books_path %>
+    <div class="ui form">
+      <div class="ui labeled input action">
+        <div class="ui label">
+          http://
+        </div>
+        <input type="text" placeholder="Enter URL for us to parse">
+        <div class="ui blue submit button">Parse</div>
+      </div>
+    </div>
+
+    <div class="ui horizontal divider">
+      Or
+    </div>
+
+    <%= render 'form', book: @book %>
+
+  </div>
+</div>

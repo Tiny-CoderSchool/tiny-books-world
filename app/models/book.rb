@@ -1,9 +1,4 @@
 class Book < ApplicationRecord
-  belongs_to :user
-
-  def self.search(search)
-    s = "%#{search.downcase}%"
-    Book.where('lower(name) like ?', s)
-  end
-
+  has_many :quotes
+  has_and_belongs_to_many :authors
 end
