@@ -1,0 +1,41 @@
+:css
+  body {
+    background-color: #DADADA;
+  }
+  body > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+.ui.middle.aligned.center.aligned.grid
+  .column
+    %h2.ui.teal.image.header
+      %img.image{:src => "assets/images/logo.png"}/
+      .content
+        Sign Up
+    = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'ui large form'}) do |f|
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            %i.user.icon
+            = f.email_field :email, autofocus: true, placeholder: "E-mail address"
+        .field
+          .ui.left.icon.input
+            %i.lock.icon
+            = f.password_field :password, autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)"
+
+        .field
+          .ui.left.icon.input
+            %i.lock.icon
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password"
+
+        .ui.fluid.large.teal.submit.button Sign Up
+      .ui.error.message
+    .ui.message
+      Already have an account?
+      = link_to 'Log In', new_user_session_path

@@ -1,0 +1,35 @@
+:css
+  body {
+    background-color: #DADADA;
+  }
+  body > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+.ui.middle.aligned.center.aligned.grid
+  .column
+    %h2.ui.teal.image.header
+      %img.image{:src => "assets/images/logo.png"}/
+      .content
+        Log-in to your account
+    = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'ui large form'}) do |f|
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            %i.user.icon
+            = f.email_field :email, autofocus: true, placeholder: "E-mail address"
+        .field
+          .ui.left.icon.input
+            %i.lock.icon
+            = f.password_field :password, autocomplete: "off", placeholder: "Password"
+        .ui.fluid.large.teal.submit.button Login
+      .ui.error.message
+    .ui.message
+      New to us?
+      = link_to 'Sign Up', new_user_registration_path 

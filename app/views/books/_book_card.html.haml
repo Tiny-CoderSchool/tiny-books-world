@@ -1,0 +1,22 @@
+.ui.card
+  %a.image{:href => "#{book_path(book)}" }
+    %img{:src => "#{book.cover}"}/
+  .content
+    %a.header #{book.title}
+    .meta
+      %span
+        - book.authors.each do |author|
+          %a
+            = author.name
+          = "," unless author == book.authors.last
+    .description
+      = book.description
+
+  .extra.content
+    %a
+      %i.user.icon
+      22 have
+  .extra
+    .ui.two.buttons
+      .ui.basic.green.button Add to Shelf
+      .ui.basic.blue.button Borrow

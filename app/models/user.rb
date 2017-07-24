@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :books
+  has_many :shelves
   has_many :users
 
   has_many :borrowing_transaction, class_name: 'Transaction', foreign_key: 'owner_id'
