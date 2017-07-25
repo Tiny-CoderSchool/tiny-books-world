@@ -1,0 +1,11 @@
+%h1 BookShelf#add_book
+%p Find me in app/views/book_shelf/add_book.html.haml
+%form.ui.reply.form{action: book_shelf_add_book_path, method: "post"}
+  =hidden_field_tag 'book_id', @book.id
+  =@book.title
+  %br
+  Select shelf
+  %br
+  = select_tag :shelf_id,
+    options_from_collection_for_select(@shelves, 'id', 'name')
+  %button.ui.basic.green Add

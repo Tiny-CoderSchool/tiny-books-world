@@ -1,0 +1,6 @@
+My Shelves
+
+- @shelves.each do |shelf|
+  %br= link_to shelf.name, shelf_path(shelf)
+
+= link_to 'New Shelf', new_shelf_path, class: 'item'

@@ -28,8 +28,9 @@
           .ui.left.icon.input
             %i.lock.icon
             = f.password_field :password, autocomplete: "off", placeholder: "Password"
-        .ui.fluid.large.teal.submit.button Login
+        .ui.fluid.large.teal.submit.button
+          = f.submit "Log in"
       .ui.error.message
     .ui.message
       New to us?
-      = link_to 'Sign Up', new_user_registration_path 
+      = link_to 'Sign Up', new_user_registration_path

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find_by_id(current_user.id)
-    @books = @user.books
+    redirect_to root_path
   end
 
   def request_book
