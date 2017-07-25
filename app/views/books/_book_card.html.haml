@@ -18,5 +18,8 @@
       22 have
   .extra
     .ui.two.buttons
-      .ui.basic.green.button Add to Shelf
-      .ui.basic.blue.button Borrow
+      %form.ui.reply.form{action: book_shelf_path, method: "post"}
+        =hidden_field_tag 'book_id', book.id
+        %button.ui.basic.green Add to Shelf
+      %form.ui.reply.form
+        .ui.basic.blue.button Borrow

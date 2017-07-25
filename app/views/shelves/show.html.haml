@@ -1,0 +1,11 @@
+Shelf -
+=@shelf.name
+%br
+All books
+%br
+- @shelf.books.each do |book|
+  %br=book.title
+  %form.ui.reply.form{action: book_shelf_remove_book_path, method: "post"}
+    =hidden_field_tag 'book_id', book.id
+    =hidden_field_tag 'shelf_id', @shelf.id
+    %button.ui.basic.green Remove

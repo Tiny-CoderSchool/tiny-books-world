@@ -18,4 +18,6 @@
 
     = link_to 'Sign In', new_user_session_path, class: 'item'
     = link_to 'Sign Up', new_user_registration_path, class: 'item'
-    = link_to 'Sign Out', destroy_user_session_path, class: 'item'
+    = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item'
+    = link_to 'My Shelves', shelves_path, class: 'item'
+    = link_to 'All Books', books_path, class: 'item'

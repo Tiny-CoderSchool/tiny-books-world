@@ -1,0 +1,7 @@
+New Shelf
+= form_with(model: @shelf, local: true, :html => {:class => 'ui form'}) do |form|
+  .field
+    = form.label :title
+    = form.text_field :name, id: :shelf_name
+  .actions
+    = form.submit 'Save',  class: 'ui button'

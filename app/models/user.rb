@@ -24,4 +24,8 @@ class User < ApplicationRecord
   has_many :borrowed,->{ where(status: 'confirmed') }, class_name: 'Transaction', foreign_key: 'borrower_id'
   has_many :borrow_return_requesting,->{ where(status: 'requesting') }, class_name: 'Transaction', foreign_key: 'borrower_id'
 
+  def shelves
+    Shelf.where(user_id: id)
+  end
+
 end
