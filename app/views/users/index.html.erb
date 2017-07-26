@@ -35,24 +35,13 @@ Books are you're requesting from others <br>
     window.onload = function () {
         var markers = <%=raw @hash.to_json %>;
         console.log(markers)
-
-
         var mapOptions = {
             center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-
-
-        console.log(mapOptions)
-
-
         var infoWindow = new google.maps.InfoWindow();
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-
-        console.log(map)
-
 
         for (i = 0; i < markers.length; i++) {
             var data = markers[i]
@@ -64,7 +53,7 @@ Books are you're requesting from others <br>
             });
             (function (marker, data) {
                 google.maps.event.addListener(marker, "click", function (e) {
-                    infoWindow.setContent('<a href="users/">' + data.marker_title + '</a>');
+                    infoWindow.setContent('<a href="WHAT SHOULD BE HERE ??? ">' + data.marker_title + '<br> Phone :' +data.user.phone +'</a>');
                     infoWindow.open(map, marker);
                 });
             })(marker, data);
