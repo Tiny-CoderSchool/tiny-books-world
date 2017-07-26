@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :shelves
   has_many :users
+  has_many :addresses
 
   has_many :borrowing_transaction, class_name: 'Transaction', foreign_key: 'owner_id'
   has_many :borrowers, :through => :borrowing_transaction, source: :borrower

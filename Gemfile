@@ -45,6 +45,11 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 gem "haml-rails"
+# Google Map for Rails
+gem 'gmaps4rails'
+
+# Geocoder
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

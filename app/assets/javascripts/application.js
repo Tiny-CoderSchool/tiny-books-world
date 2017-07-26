@@ -15,4 +15,7 @@
 //= require_tree .
 //= require jquery3
 //= require popper
+//= require bootstrap-sprockets
+//= require underscore
+//= require gmaps/google
 //= require semantic-ui
