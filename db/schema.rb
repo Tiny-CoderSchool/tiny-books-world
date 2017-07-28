@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725071142) do
+ActiveRecord::Schema.define(version: 20170726122219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20170725071142) do
     t.string "cover"
   end
 
+  create_table "borrow_tickets", force: :cascade do |t|
+    t.date "borrow_date"
+    t.date "estimated_return_date"
+    t.date "actual_return_date"
+    t.text "comment"
+    t.bigint "book_shelf_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_shelf_id"], name: "index_borrow_tickets_on_book_shelf_id"
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.bigint "book_id"
     t.string "content"
@@ -87,5 +99,6 @@ ActiveRecord::Schema.define(version: 20170725071142) do
 
   add_foreign_key "book_shelves", "books"
   add_foreign_key "book_shelves", "shelves"
+  add_foreign_key "borrow_tickets", "book_shelves"
   add_foreign_key "quotes", "books"
 end
