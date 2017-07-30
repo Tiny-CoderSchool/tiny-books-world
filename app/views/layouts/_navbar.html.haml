@@ -5,19 +5,25 @@
 
   = link_to 'Home', root_path, class: 'item'
 
-  .right.menu
-    %a.item
-      %i.icon.mail
-      Messages
-      .horizontal.ui.red.label 22
-    %a.item
-      %i.icon.users
-      Friends
-      .horizontal.ui.teal.label 22
+  - if user_signed_in?
+    .right.menu
+      %a.item
+        %i.icon.mail
+        Messages
+        .horizontal.ui.red.label 22
+      %a.item
+        %i.icon.users
+        Friends
+        .horizontal.ui.teal.label 22
 
-
-    = link_to 'Sign In', new_user_session_path, class: 'item'
-    = link_to 'Sign Up', new_user_registration_path, class: 'item'
-    = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item'
-    = link_to 'My Shelves', shelves_path, class: 'item'
-    = link_to 'All Books', books_path, class: 'item'
+    .ui.dropdown.item
+      Language
+      %i.dropdown.icon
+      .menu
+        = link_to 'My Shelves', shelves_path, class: 'item'
+        = link_to 'All Books', books_path, class: 'item'
+        = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'item'
+  - else
+    .right.menu
+      = link_to 'Sign In', new_user_session_path, class: 'item'
+      = link_to 'Sign Up', new_user_registration_path, class: 'item'

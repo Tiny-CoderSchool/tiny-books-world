@@ -28,8 +28,7 @@
           .ui.left.icon.input
             %i.lock.icon
             = f.password_field :password, autocomplete: "off", placeholder: "Password"
-        .ui.fluid.large.teal.submit.button
-          = f.submit "Log in"
+        = f.submit "Log in", :class => "ui fluid large teal submit button"
       .ui.error.message
     .ui.message
       New to us?

@@ -1,6 +1,25 @@
-My Shelves
+.ui.container
+  .ui.row.grid
+    .ui.column.eight.wide
+      %h2.ui.left.floated.header Your Shelves
+    .ui.column.eight.wide
+      %button.ui.right.floated.button Left Floated
+  %br
 
-- @shelves.each do |shelf|
-  %br= link_to shelf.name, shelf_path(shelf)
+
+  .ui.row
+    - @shelves.each do |shelf|
+      .ui.raised.clearing.segment
+        %a.ui.ribbon.label= shelf.name
+        %br
+        %br
+
+        .ui.link.four.cards
+          - shelf.books.each do |book|
+            = render partial:'/books/book_card', locals: {book: book, show_detail: false}
+
+        .ui.clear
+
+        %br
 
 = link_to 'New Shelf', new_shelf_path, class: 'item'
