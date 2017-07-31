@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find_by_id(current_user.id)
 
-    @address = Address.find_by(user_id: @user.id).nearbys(10,:unit => :km)
+    @book = Book.find_by_id(params[:id])
+
+    @users = @book.users
+
+    @address = Address.find_by(user: @users).nearbys(30,:unit => :km)
 
     @hash = Gmaps4rails.build_markers(@address) do |a, marker|
       marker.lat a.latitude
@@ -19,6 +22,5 @@ class UsersController < ApplicationController
   def confirm_lending
     #TO DO
   end
-
 
 end
