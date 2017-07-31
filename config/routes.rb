@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :addresses
   get 'users/index', to: 'users#index'
   resources :shelves
   resources :books
