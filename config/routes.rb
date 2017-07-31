@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'users/index', to: 'users#index'
   resources :shelves
-  resources :books
+  resources :books do
+    member do
+      get 'borrow'
+    end
+  end
+
   devise_for :users
   root 'home#index'
 

@@ -1,0 +1,41 @@
+.ui
+  .header Choose owner to borrow
+  .ui.four.columns.clearfix
+    .column.one.scrolling.content
+
+    .column.three.wide
+      #map{style: "width: 800px; height: 400px"}
+
+:javascript
+  window.onload = function () {
+      var markers = #{raw @hash.to_json};
+      console.log(markers)
+      var mapOptions = {
+          center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var infoWindow = new google.maps.InfoWindow();
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+      for (i = 0; i < markers.length; i++) {
+          var data = markers[i]
+          var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+          marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: data.title
+          });
+          (function (marker, data) {
+              google.maps.event.addListener(marker, "click", function (e) {
+                  infoWindow.setContent('<a href="#{}">' + data.marker_title + '<br> Phone :' +data.user.phone +'</a>');
+                  infoWindow.open(map, marker);
+              });
+          })(marker, data);
+      }
+  }
+
+%script{:src => "//maps.google.com/maps/api/js?key=AIzaSyDE7owCz-AL5JUgU1-sBdqMSg5JPf02G6o"}
+%script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+%script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
+/ only if you need custom infoboxes

@@ -3,7 +3,7 @@
 <div class="ui container">
   <h1>Books</h1>
 
-  <div class="ui link cards">
+  <div class="ui link cards books">
     <% @books.each do |book| %>
       <%= render partial:'book_card', locals: {book: book, show_detail: true} %>
     <% end %>
