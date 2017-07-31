@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @address.user
+%p
+  %b Country:
+  = @address.country
+%p
+  %b City:
+  = @address.city
+%p
+  %b District:
+  = @address.district
+%p
+  %b Ward:
+  = @address.ward
+%p
+  %b Street:
+  = @address.street
+%p
+  %b Phone:
+  = @address.phone
+
+= link_to 'Edit', edit_address_path(@address)
+\|
+= link_to 'Back', addresses_path
