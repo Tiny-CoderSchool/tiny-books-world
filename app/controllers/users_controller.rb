@@ -3,19 +3,9 @@ class UsersController < ApplicationController
 
     @book = Book.find_by_id(params[:id])
 
-    @book.selves
+    @users = @book.users
 
-
-
-    @users = User.where(id: user_ids)
-
-
-
-
-
-
-
-    @address = Address.find_by(user_id: @users.id).nearbys(100,:unit => :km)
+    @address = Address.find_by(user: @users).nearbys(30,:unit => :km)
 
     @hash = Gmaps4rails.build_markers(@address) do |a, marker|
       marker.lat a.latitude
