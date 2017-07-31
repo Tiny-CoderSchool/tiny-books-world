@@ -4,9 +4,4 @@ class Book < ApplicationRecord
   has_many :book_shelves, -> { active }
   has_many :shelves, :through => :book_shelves
   has_many :users, :through => :shelves, source: :user
-
-
-
-
-
 end
