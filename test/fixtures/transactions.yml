@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  book: 
-  owner_id: 1
-  borrower_id: MyString
+  book: one
+  owner: one
+  borrower: one
+  from: 2017-07-31 20:20:56
+  to: 2017-07-31 20:20:56
   status: MyString
 
 two:
-  book: 
-  owner_id: 1
-  borrower_id: MyString
+  book: two
+  owner: two
+  borrower: two
+  from: 2017-07-31 20:20:56
+  to: 2017-07-31 20:20:56
   status: MyString

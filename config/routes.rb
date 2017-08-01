@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :addresses
+  resources :transactions
   get 'users/index', to: 'users#index'
   resources :shelves
   resources :books do
     member do
+      get 'borrow'
       get 'borrow'
     end
   end

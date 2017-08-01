@@ -1,12 +1,36 @@
-.ui
+.ui.container
   .header Choose owner to borrow
   .ui.four.columns.clearfix
-    .column.one.scrolling.content
+    .ui.form
+      .two.fields
+        .field
+          %label Start date
+          #rangestart.ui.calendar
+            .ui.input.left.icon
+              %i.calendar.icon
+              %input{:placeholder => "Start", :type => "text"}/
+        .field
+          %label End date
+          #rangeend.ui.calendar
+            .ui.input.left.icon
+              %i.calendar.icon
+              %input{:placeholder => "End", :type => "text"}/
+    %br/
 
-    .column.three.wide
-      #map{style: "width: 800px; height: 400px"}
+    #map{style: "width: 800px; height: 400px"}
 
 :javascript
+  $(document).ready(function() {
+    $('#rangestart').calendar({
+      type: 'date',
+      endCalendar: $('#rangeend')
+      });
+    $('#rangeend').calendar({
+      type: 'date',
+      startCalendar: $('#rangestart')
+    });
+  })
+
   window.onload = function () {
       var markers = #{raw @hash.to_json};
       console.log(markers)
@@ -28,13 +52,15 @@
           });
           (function (marker, data) {
               google.maps.event.addListener(marker, "click", function (e) {
-                  infoWindow.setContent('<a href="#{}">' + data.marker_title + '<br> Phone :' +data.user.phone +'</a>');
+                  infoWindow.setContent("#{render_to_body(:partial => "marker", :locals => { :user => current_user})}");
                   infoWindow.open(map, marker);
               });
           })(marker, data);
       }
   }
 
+%link{:href => "https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css", :rel => "stylesheet", :type => "text/css"}/
+%script{:src => "https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"}
 %script{:src => "//maps.google.com/maps/api/js?key=AIzaSyDE7owCz-AL5JUgU1-sBdqMSg5JPf02G6o"}
 %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
 %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725071142) do
+ActiveRecord::Schema.define(version: 20170731132056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,20 @@ ActiveRecord::Schema.define(version: 20170725071142) do
     t.index ["user_id"], name: "index_shelves_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "owner_id"
+    t.bigint "borrower_id"
+    t.datetime "from"
+    t.datetime "to"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_transactions_on_book_id"
+    t.index ["borrower_id"], name: "index_transactions_on_borrower_id"
+    t.index ["owner_id"], name: "index_transactions_on_owner_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -104,4 +118,5 @@ ActiveRecord::Schema.define(version: 20170725071142) do
   add_foreign_key "book_shelves", "books"
   add_foreign_key "book_shelves", "shelves"
   add_foreign_key "quotes", "books"
+  add_foreign_key "transactions", "books"
 end
